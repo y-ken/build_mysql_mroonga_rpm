@@ -63,7 +63,7 @@ rpmbuild -bb SPECS/mysql56-mroonga.spec
 echo "rpmbuild DONE. move to shared folder"
 
 DATENOW=$(date +%Y%m%d%H%M)
-cd /vagrant
+cd /tmp
 mkdir rpms-$DATENOW
 cd rpms-$DATENOW
 yumdownloader --disablerepo=* --enablerepo=groonga groonga-devel groonga-libs groonga-normalizer-mysql \
