@@ -1,7 +1,7 @@
 #!/bin/sh
 
-MYSQL_VER="5.6.15-1"
-MROONGA_VER="3.10-1"
+MYSQL_VER="5.6.16-1"
+MROONGA_VER="4.00-2"
 
 yum -y groupinstall 'Development Tools'
 yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
