@@ -17,6 +17,7 @@ fi
 mkdir -p /tmp/build/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir /tmp/build/rpmbuild' > /root/.rpmmacros
 echo '%debug_package %{nil}' >> /root/.rpmmacros
+HOME=/root
 
 mkdir -p /tmp/build/rpmbuild/RPMS/x86_64
 cd /tmp/build/rpmbuild/RPMS/x86_64
@@ -30,7 +31,7 @@ yum -y localinstall MySQL-shared-compat-5*
 yum -y localinstall MySQL-shared-5* MySQL-server-5* MySQL-devel-5* MySQL-client-5*
 cd /tmp/build/rpmbuild/SRPMS
 wget --progress=bar:force http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-$MYSQL_VER.el6.src.rpm
-rpm -Uvh MySQL-$MYSQL_VER.el6.src.rpm
+rpm -ivh MySQL-$MYSQL_VER.el6.src.rpm
 
 /etc/init.d/mysql start
 sleep 3
