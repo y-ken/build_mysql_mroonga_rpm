@@ -72,6 +72,6 @@ cp /tmp/build/rpmbuild/RPMS/x86_64/*.rpm ./
 rm -f MySQL-test-* MySQL-embedded-*
 
 echo "Done!!"
-
+exit 0
 
 
