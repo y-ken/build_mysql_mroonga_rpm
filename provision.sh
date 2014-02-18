@@ -60,7 +60,7 @@ perl -i -pe "s/^Name:\s+mysql-mroonga$/Name: mysql56-mroonga/" mysql56-mroonga.s
 cd ..
 rpmbuild -bb SPECS/mysql56-mroonga.spec
 
-echo "rpmbuild DONE. move to shared folder"
+echo "rpmbuild DONE."
 
 DATENOW=$(date +%Y%m%d%H%M)
 cd /tmp
@@ -71,4 +71,5 @@ yumdownloader --disablerepo=* --enablerepo=groonga groonga-devel groonga-libs gr
 cp /tmp/build/rpmbuild/RPMS/x86_64/*.rpm ./
 rm -f MySQL-test-* MySQL-embedded-*
 
+echo "moving rpm package to /tmp/${DATENOW}"
 echo "Done!!"
