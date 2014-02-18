@@ -5,7 +5,7 @@ MROONGA_VER="4.00-2"
 
 yum -y groupinstall 'Development Tools'
 yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-yum -y install wget yum-utils
+yum -y install wget yum-utils tree
 yum -y remove mysql mysql-server
 if [ -d /var/lib/mysql ]; then
   rm -rf /var/lib/mysql
@@ -62,8 +62,13 @@ rpmbuild -bb SPECS/mysql56-mroonga.spec
 
 echo "rpmbuild DONE."
 
+if [ -d /vagrant ]; then
+    EXPORT_DIR="/vagrant"
+else
+    EXPORT_DIR="/tmp"
+fi
 DATENOW=$(date +%Y%m%d%H%M)
-cd /tmp
+cd $EXPORT_DIR
 mkdir rpms-$DATENOW
 cd rpms-$DATENOW
 yumdownloader --disablerepo=* --enablerepo=groonga groonga-devel groonga-libs groonga-normalizer-mysql \
@@ -71,5 +76,7 @@ yumdownloader --disablerepo=* --enablerepo=groonga groonga-devel groonga-libs gr
 cp /tmp/build/rpmbuild/RPMS/x86_64/*.rpm ./
 rm -f MySQL-test-* MySQL-embedded-*
 
-echo "moving rpm package to /tmp/${DATENOW}"
+echo "moving rpm package to ${EXPORT_DIR}/${DATENOW}"
+tree ${EXPORT_DIR}/${DATENOW}
+
 echo "Done!!"
