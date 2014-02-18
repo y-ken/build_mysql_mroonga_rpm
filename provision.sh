@@ -76,7 +76,7 @@ yumdownloader --disablerepo=* --enablerepo=groonga groonga-devel groonga-libs gr
 cp /tmp/build/rpmbuild/RPMS/x86_64/*.rpm ./
 rm -f MySQL-test-* MySQL-embedded-*
 
-echo "moving rpm package to ${EXPORT_DIR}/${DATENOW}"
-tree ${EXPORT_DIR}/${DATENOW}
+echo "moving rpm package to ${EXPORT_DIR}/rpms-${DATENOW}"
+tree ${EXPORT_DIR}/rpms-${DATENOW}
 
 echo "Done!!"
